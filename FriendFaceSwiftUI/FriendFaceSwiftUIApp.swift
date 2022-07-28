@@ -6,12 +6,23 @@
 //
 
 import SwiftUI
+import CloudKit
 
 @main
 struct FriendFaceSwiftUIApp: App {
+    // загружаем DataController при запуске приложения
+    @StateObject private var dataController = DataController()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+           
+                ContentView()
+                    
+                GirdLayoutView()
+                    .environment(\.managedObjectContext, dataController.container.viewContext)
+         
+            // загружаем DataController при запуске приложения
+                
         }
     }
 }
